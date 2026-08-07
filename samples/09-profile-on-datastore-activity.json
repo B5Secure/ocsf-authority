@@ -1,0 +1,37 @@
+{
+ "category_uid": 6,
+ "class_uid": 6005,
+ "class_name": "Datastore Activity",
+ "activity_id": 1,
+ "time": 1785700000000,
+ "severity_id": 1,
+ "metadata": {
+  "version": "1.5.0",
+  "profiles": [
+   "authority"
+  ],
+  "product": {
+   "name": "Example Third-Party Product",
+   "vendor_name": "Example Vendor"
+  },
+  "correlation_uid": "corr-illustrative"
+ },
+ "_note": "Illustrative: a database activity monitor's event carrying the grant in force. Not produced by B5.",
+ "actor": {
+  "user": {
+   "uid": "usr-1042",
+   "name": "j.okafor"
+  }
+ },
+ "delegation": {
+  "uid": "grant-4471",
+  "grantor": "user-1042",
+  "grantee": "advisor-338",
+  "purpose": "portfolio_rebalance",
+  "on_revoke_in_flight": "fail"
+ },
+ "reason_code": "ALLOW_SCOPE_MATCH",
+ "reason_code_id": 2,
+ "purpose": "portfolio_rebalance",
+ "is_shadow": false
+}

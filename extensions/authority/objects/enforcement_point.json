@@ -1,0 +1,40 @@
+{
+  "caption": "Enforcement Point",
+  "name": "enforcement_point",
+  "extends": "object",
+  "description": "Where a decision was made and enforced. The distinguishing property of in-process authorization is that this is a business method inside the application, not a gateway or a proxy in front of it.",
+  "attributes": {
+    "type": {
+      "caption": "Type",
+      "requirement": "required",
+      "description": "in_process_method | gateway | proxy | database | external_pdp | other"
+    },
+    "name": {
+      "caption": "Name",
+      "requirement": "recommended",
+      "description": "Fully-qualified operation identifier, e.g. the namespace, type and method."
+    },
+    "uid": {
+      "caption": "Unique ID",
+      "requirement": "optional"
+    },
+    "runtime": {
+      "caption": "Runtime",
+      "requirement": "recommended",
+      "description": "Host or runtime, e.g. aspnet_core, servicestack, grpc, functions, worker, queue_consumer, orleans, dapr."
+    },
+    "version": {
+      "caption": "Version",
+      "requirement": "optional",
+      "description": "Version of the enforcement component."
+    },
+    "stage_id": {
+      "requirement": "required",
+      "description": "Which of the three decision points enforced this decision. Request means no data access occurred at all."
+    },
+    "stage": {
+      "requirement": "optional",
+      "description": "The vendor-specific stage label, alongside stage_id."
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+ "category_uid": 3,
+ "class_uid": 3002,
+ "class_name": "Authentication",
+ "activity_id": 1,
+ "time": 1785700000000,
+ "severity_id": 1,
+ "metadata": {
+  "version": "1.5.0",
+  "profiles": [
+   "authority"
+  ],
+  "product": {
+   "name": "Example Third-Party Product",
+   "vendor_name": "Example Vendor"
+  },
+  "correlation_uid": "corr-illustrative"
+ },
+ "_note": "Illustrative: an identity provider's Authentication event carrying authority context via the profile. Not produced by B5.",
+ "actor": {
+  "user": {
+   "uid": "usr-1042",
+   "name": "j.okafor"
+  }
+ },
+ "delegation": {
+  "uid": "grant-4471",
+  "grantor": "user-1042",
+  "grantee": "advisor-338",
+  "purpose": "portfolio_rebalance",
+  "on_revoke_in_flight": "fail"
+ },
+ "reason_code": "ALLOW_SCOPE_MATCH",
+ "reason_code_id": 2,
+ "purpose": "portfolio_rebalance",
+ "is_shadow": false
+}

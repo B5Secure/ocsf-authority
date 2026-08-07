@@ -1,0 +1,38 @@
+{
+  "caption": "Authority Limit",
+  "name": "authority_limit",
+  "extends": "object",
+  "description": "An aggregate limit consulted during a decision. Without this, a threshold denial is indistinguishable from a scope denial.",
+  "attributes": {
+    "name": {
+      "caption": "Name",
+      "requirement": "required"
+    },
+    "type": {
+      "caption": "Type",
+      "requirement": "recommended",
+      "description": "count | amount | rate | concurrency | other"
+    },
+    "window": {
+      "caption": "Window",
+      "requirement": "recommended",
+      "description": "Aggregation window, e.g. P1D."
+    },
+    "threshold": {
+      "caption": "Threshold",
+      "requirement": "recommended"
+    },
+    "consumed": {
+      "caption": "Consumed",
+      "requirement": "recommended"
+    },
+    "remaining": {
+      "caption": "Remaining",
+      "requirement": "optional"
+    },
+    "is_exceeded": {
+      "caption": "Is Exceeded",
+      "requirement": "recommended"
+    }
+  }
+}

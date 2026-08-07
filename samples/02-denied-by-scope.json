@@ -1,0 +1,79 @@
+{
+ "category_uid": 3,
+ "category_name": "Identity & Access Management",
+ "class_name": "Authorization Decision",
+ "metadata": {
+  "version": "1.5.0",
+  "product": {
+   "name": "B5 Security Platform",
+   "vendor_name": "B5 Secure",
+   "version": "4.0.0.3"
+  },
+  "extension": {
+   "name": "authority",
+   "uid": "PENDING-OCSF-REGISTRATION",
+   "version": "0.3.0"
+  },
+  "correlation_uid": "corr-b2bcf0d44c77"
+ },
+ "tenant_uid": "t-8f21c0",
+ "time": 1785225601456,
+ "severity_id": 3,
+ "activity_id": 9,
+ "activity_name": "Transfer",
+ "is_permitted": false,
+ "reason_code": "DENY_SCOPE_ACCOUNT_NOT_IN_GRANT",
+ "actor": {
+  "user": {
+   "uid": "advisor-338",
+   "name": "j.okafor",
+   "type": "User"
+  }
+ },
+ "resource": {
+  "uid": "AC-77310",
+  "type": "custody_account",
+  "name": "Account AC-77310"
+ },
+ "enforcement_point": {
+  "type": "in_process_method",
+  "runtime": "aspnet_core",
+  "name": "Custody.Instructions.InstructionService.Submit",
+  "stage_id": 1,
+  "stage": "request"
+ },
+ "delegation": {
+  "uid": "grant-4471",
+  "grantor": "user-1042",
+  "grantee": "advisor-338",
+  "purpose": "portfolio_rebalance",
+  "scope": "account:AC-99120;action:transfer",
+  "start_time": 1785000000,
+  "end_time": 1790000000,
+  "on_revoke_in_flight": "fail",
+  "is_revoked": false
+ },
+ "purpose": "portfolio_rebalance",
+ "policy": {
+  "uid": "pol-cust-14",
+  "name": "Custody Servicing",
+  "version": "14"
+ },
+ "decision_evidence": {
+  "uid": "ev-01J8ZA",
+  "hash": "b7c1f0e2a9",
+  "prev_hash": "4d0aa71cc3",
+  "chain_uid": "chain-t-8f21c0",
+  "sequence": 918234,
+  "signature": "MEUCIQDf...",
+  "signing_key_uid": "key-2026-07-a",
+  "verifier_url": "https://b5secure.com/platform/decision-evidence/"
+ },
+ "is_shadow": false,
+ "state_age": 240,
+ "duration": 2,
+ "message": "The grant covers AC-99120; the instruction targeted AC-77310.",
+ "reason_code_id": 11,
+ "class_uid": "PENDING-OCSF-REGISTRATION",
+ "type_uid": "PENDING-OCSF-REGISTRATION"
+}

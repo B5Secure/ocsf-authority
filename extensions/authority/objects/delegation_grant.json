@@ -1,0 +1,52 @@
+{
+  "caption": "Delegation Grant",
+  "name": "delegation_grant",
+  "extends": "object",
+  "description": "A grant of authority from one party to another, bounded in scope, purpose and time. Recording the grant on the decision is what makes a delegated action attributable to both the delegate and the grantor.",
+  "attributes": {
+    "uid": {
+      "caption": "Grant ID",
+      "requirement": "required"
+    },
+    "grantor": {
+      "caption": "Grantor",
+      "requirement": "required",
+      "description": "The party whose authority is being exercised."
+    },
+    "grantee": {
+      "caption": "Grantee",
+      "requirement": "required",
+      "description": "The party exercising it."
+    },
+    "purpose": {
+      "caption": "Purpose",
+      "requirement": "recommended"
+    },
+    "scope": {
+      "caption": "Scope",
+      "requirement": "recommended",
+      "description": "What the grant covers, expressed in the producer's own scope vocabulary."
+    },
+    "start_time": {
+      "caption": "Effective From",
+      "requirement": "recommended"
+    },
+    "end_time": {
+      "caption": "Effective To",
+      "requirement": "recommended"
+    },
+    "on_revoke_in_flight": {
+      "caption": "On Revoke In Flight",
+      "requirement": "recommended",
+      "description": "fail | allow_completion. Whether an instruction already accepted but not yet complete fails when authority is withdrawn. Fail is the safe default; allow_completion should be an explicit, recorded election by the grantor."
+    },
+    "is_revoked": {
+      "caption": "Is Revoked",
+      "requirement": "optional"
+    },
+    "revoked_time": {
+      "caption": "Revoked Time",
+      "requirement": "optional"
+    }
+  }
+}

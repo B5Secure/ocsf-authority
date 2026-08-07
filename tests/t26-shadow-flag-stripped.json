@@ -1,0 +1,96 @@
+{
+ "category_uid": 3,
+ "category_name": "Identity & Access Management",
+ "class_name": "Authorization Decision",
+ "metadata": {
+  "version": "1.5.0",
+  "product": {
+   "name": "B5 Security Platform",
+   "vendor_name": "B5 Secure",
+   "version": "4.0.0.3"
+  },
+  "extension": {
+   "name": "authority",
+   "uid": "PENDING-OCSF-REGISTRATION",
+   "version": "0.3.0"
+  },
+  "correlation_uid": "corr-332cc262ca04"
+ },
+ "tenant_uid": "t-8f21c0",
+ "time": 1785225600123,
+ "severity_id": 1,
+ "activity_id": 1,
+ "activity_name": "Read",
+ "is_permitted": true,
+ "reason_code": "ALLOW_SCOPE_MATCH",
+ "actor": {
+  "user": {
+   "uid": "advisor-338",
+   "name": "j.okafor",
+   "type": "User"
+  }
+ },
+ "resource": {
+  "uid": "AC-99120",
+  "type": "custody_account",
+  "name": "Account AC-99120",
+  "owner": {
+   "uid": "user-1042"
+  },
+  "data": {
+   "classification": "confidential"
+  }
+ },
+ "enforcement_point": {
+  "type": "in_process_method",
+  "runtime": "aspnet_core",
+  "name": "Custody.Accounts.AccountService.Get",
+  "stage_id": 3,
+  "stage": "delivery"
+ },
+ "delegation": {
+  "uid": "grant-4471",
+  "grantor": "user-1042",
+  "grantee": "advisor-338",
+  "purpose": "portfolio_rebalance",
+  "scope": "account:AC-99120;action:transfer",
+  "start_time": 1785000000,
+  "end_time": 1790000000,
+  "on_revoke_in_flight": "fail",
+  "is_revoked": false
+ },
+ "purpose": "portfolio_rebalance",
+ "policy": {
+  "uid": "pol-cust-14",
+  "name": "Custody Servicing",
+  "version": "14"
+ },
+ "decision_evidence": {
+  "uid": "ev-01J8Z9",
+  "hash": "b7c1f0e2a9",
+  "prev_hash": "4d0aa71cc3",
+  "chain_uid": "chain-t-8f21c0",
+  "sequence": 918233,
+  "signature": "MEUCIQDf...",
+  "signing_key_uid": "key-2026-07-a",
+  "verifier_url": "https://b5secure.com/platform/decision-evidence/"
+ },
+ "state_age": 240,
+ "duration": 3,
+ "released_attributes": [
+  "ClientNumber",
+  "ClientType",
+  "Contact.FirstName"
+ ],
+ "withheld_attributes": [
+  "CreatedDate",
+  "Contact.Email",
+  "Contact.Phone"
+ ],
+ "response_mode": "partial",
+ "entitlement_mode": "per_record",
+ "evidence_granularity": "per_record",
+ "reason_code_id": 2,
+ "class_uid": "PENDING-OCSF-REGISTRATION",
+ "type_uid": "PENDING-OCSF-REGISTRATION"
+}

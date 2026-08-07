@@ -1,0 +1,49 @@
+{
+  "caption": "Authority",
+  "name": "authority",
+  "meta": "profile",
+  "description": "Adds authority context to any event class: the delegation in force, the enforcement point, the reason code, the declared purpose and whether the decision was simulated. Applying this profile to Authentication, API Activity, Datastore Activity or HTTP Activity lets a producer carry authority without adopting the Authorization Decision class.",
+  "attributes": {
+    "delegation": {
+      "requirement": "optional"
+    },
+    "enforcement_point": {
+      "requirement": "recommended"
+    },
+    "reason_code": {
+      "requirement": "recommended"
+    },
+    "purpose": {
+      "requirement": "optional"
+    },
+    "is_shadow": {
+      "requirement": "recommended"
+    },
+    "released_attributes": {
+      "requirement": "optional"
+    },
+    "withheld_attributes": {
+      "requirement": "optional"
+    },
+    "response_mode": {
+      "requirement": "optional"
+    },
+    "entitlement_mode": {
+      "requirement": "optional"
+    },
+    "withheld_count": {
+      "requirement": "optional"
+    }
+  },
+  "annotations": {
+    "group": "context"
+  },
+  "_applies_to": [
+    "authentication",
+    "api_activity",
+    "datastore_activity",
+    "http_activity",
+    "file_activity",
+    "authorization_decision"
+  ]
+}

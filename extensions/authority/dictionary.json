@@ -1,0 +1,170 @@
+{
+  "attributes": {
+    "is_permitted": {
+      "caption": "Is Permitted",
+      "type": "boolean_t",
+      "description": "Whether the action was permitted. False means the action was denied and did not execute."
+    },
+    "reason_code": {
+      "caption": "Reason Code",
+      "type": "string_t",
+      "description": "The producer's closed-vocabulary code explaining the decision. A closed vocabulary is required: free text cannot be correlated and cannot be audited."
+    },
+    "reason_code_id": {
+      "caption": "Reason Code ID",
+      "type": "integer_t",
+      "description": "Numeric form of reason_code, where the producer defines one.",
+      "enum": {
+        "1": {
+          "caption": "Allow - Direct Authority",
+          "description": "Permitted by the principal's own authority, with no delegation involved."
+        },
+        "2": {
+          "caption": "Allow - Delegated Authority",
+          "description": "Permitted under a delegation grant held by the acting principal."
+        },
+        "3": {
+          "caption": "Allow - Break Glass",
+          "description": "Permitted under a time-boxed, dual-approved emergency grant. Emergency access is a grant, never an exemption."
+        },
+        "10": {
+          "caption": "Deny - No Grant",
+          "description": "No authority of any kind covers the request. Absence of a permit is a denial."
+        },
+        "11": {
+          "caption": "Deny - Out Of Scope",
+          "description": "A grant exists but does not cover this resource."
+        },
+        "12": {
+          "caption": "Deny - Purpose Mismatch",
+          "description": "A grant exists but is bound to a different declared purpose."
+        },
+        "13": {
+          "caption": "Deny - Limit Exceeded",
+          "description": "An aggregate limit was consulted and exceeded. The limit that tripped is named in limits[]."
+        },
+        "14": {
+          "caption": "Deny - Grant Revoked",
+          "description": "The grant was revoked before the request arrived."
+        },
+        "15": {
+          "caption": "Deny - Revoked In Flight",
+          "description": "The grant was revoked while the operation was already running, and the grant elected to fail."
+        },
+        "16": {
+          "caption": "Deny - Element Not Permitted",
+          "description": "The resource is in scope but the specific data element requested is not."
+        },
+        "17": {
+          "caption": "Deny - Unmapped Access Site",
+          "description": "A data-access site was reached that no policy binds. An unmapped site denies."
+        },
+        "18": {
+          "caption": "Deny - Page Cap Exceeded",
+          "description": "A list request exceeded the declared maximum page size. Refused, never silently truncated."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "A reason the enum does not yet cover. reason_code carries the detail."
+        }
+      }
+    },
+    "is_shadow": {
+      "caption": "Is Shadow",
+      "type": "boolean_t",
+      "description": "True when the decision was produced by simulation or shadow evaluation and did NOT affect the response. Consumers MUST exclude shadow decisions from detections and metrics; a stream that cannot distinguish them is unusable for either."
+    },
+    "state_age": {
+      "caption": "State Age",
+      "type": "integer_t",
+      "description": "Age in milliseconds of the authority state consulted, at decision time. A permit issued against stale state is not equivalent to one issued against current state."
+    },
+    "purpose": {
+      "caption": "Purpose",
+      "type": "string_t",
+      "description": "The declared purpose the actor was acting for. Required for delegated and autonomous-agent actions, where authority is bounded by purpose as well as by scope."
+    },
+    "enforcement_point": {
+      "caption": "Enforcement Point",
+      "type": "enforcement_point",
+      "description": "Where in the running system the decision was made and enforced."
+    },
+    "delegation": {
+      "caption": "Delegation",
+      "type": "delegation_grant",
+      "description": "The delegated authority in force at decision time, if any."
+    },
+    "decision_evidence": {
+      "caption": "Decision Evidence",
+      "type": "decision_evidence",
+      "description": "Verifiable evidence for the decision."
+    },
+    "limits": {
+      "caption": "Limits",
+      "type": "authority_limit",
+      "is_array": true,
+      "description": "Aggregate limits consulted while making the decision."
+    },
+    "released_attributes": {
+      "caption": "Released Attributes",
+      "description": "Names of the data elements actually released to the caller. Element names only, never element values: an evidence stream carrying values becomes a duplicate of the data it protects, aggregated across principals and retained for audit periods.",
+      "type": "string_t",
+      "is_array": true
+    },
+    "withheld_attributes": {
+      "caption": "Withheld Attributes",
+      "description": "Names of the data elements withheld from the caller. A count alone is insufficient, because a caller receiving seven of ten elements needs to know which three are absent rather than assuming a complete view.",
+      "type": "string_t",
+      "is_array": true
+    },
+    "response_mode": {
+      "caption": "Response Mode",
+      "description": "Whether the operation composed atomically or returned only the permitted subset. One of atomic or partial. Atomic is the closed default; partial is a declared degradation.",
+      "type": "string_t"
+    },
+    "entitlement_mode": {
+      "caption": "Entitlement Mode",
+      "description": "Whether element entitlement was evaluated per record or once for the operation under a declared invariance. One of per_record or invariant. A wrong invariance declaration applies one record mask to every record, which is a data leak produced by a performance hint.",
+      "type": "string_t"
+    },
+    "withheld_count": {
+      "caption": "Withheld Count",
+      "description": "Records omitted from a list response because the principal was not entitled to them. Reported alongside the authorized total so a caller can never mistake a restricted view for a complete one.",
+      "type": "integer_t"
+    },
+    "evidence_granularity": {
+      "caption": "Evidence Granularity",
+      "description": "Whether this evidence entry covers a single record decision or one list operation. One of per_record or per_operation. Stated in the entry so a reader knows which contract they are reading rather than inferring it.",
+      "type": "string_t"
+    },
+    "tenant_uid": {
+      "caption": "Tenant UID",
+      "description": "The tenant the decision was made within. Present in every sample and required for multi-tenant deployments, where a decision is meaningless without knowing whose data it concerned.",
+      "type": "string_t"
+    },
+    "stage_id": {
+      "caption": "Decision Stage",
+      "description": "Which of the three decision points enforced this decision. Request means no data access occurred at all, which is the difference between preventing a disclosure and filtering one after the fact.",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "Request",
+          "description": "Decided before any data access is composed or issued. No I/O is performed at all."
+        },
+        "2": {
+          "caption": "Access",
+          "description": "Decided as the outbound access is composed, narrowing the projection to permitted elements."
+        },
+        "3": {
+          "caption": "Delivery",
+          "description": "Decided as the response is composed, determining which elements reach this caller."
+        }
+      }
+    },
+    "stage": {
+      "caption": "Decision Stage Detail",
+      "description": "The vendor-specific stage label, alongside stage_id.",
+      "type": "string_t"
+    }
+  }
+}

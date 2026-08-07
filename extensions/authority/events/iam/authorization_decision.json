@@ -1,0 +1,175 @@
+{
+  "uid": 1,
+  "caption": "Authorization Decision",
+  "name": "authorization_decision",
+  "category": "iam",
+  "extends": "base_event",
+  "profiles": [
+    "authority",
+    "host",
+    "cloud"
+  ],
+  "description": "A decision about whether a specific actor may perform a specific action on a specific record, made at the point the action would execute. Distinct from Authorize Session (3003), which describes privileges assigned at session establishment, and from API Activity (6003), which describes a request rather than the authority under which it was permitted or refused.",
+  "attributes": {
+    "activity_id": {
+      "caption": "Activity ID",
+      "requirement": "required",
+      "description": "The action whose authorization was decided.",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Read"
+        },
+        "2": {
+          "caption": "Create"
+        },
+        "3": {
+          "caption": "Update"
+        },
+        "4": {
+          "caption": "Delete"
+        },
+        "5": {
+          "caption": "Execute"
+        },
+        "6": {
+          "caption": "Export"
+        },
+        "7": {
+          "caption": "Query"
+        },
+        "8": {
+          "caption": "Approve"
+        },
+        "9": {
+          "caption": "Transfer"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
+    "actor": {
+      "requirement": "required",
+      "description": "The user, service or autonomous agent whose authority was evaluated."
+    },
+    "resource": {
+      "requirement": "required",
+      "description": "The individual record the action targeted. A decision without a record is a session decision, not this class."
+    },
+    "is_permitted": {
+      "requirement": "required"
+    },
+    "reason_code": {
+      "requirement": "required"
+    },
+    "reason_code_id": {
+      "requirement": "optional"
+    },
+    "enforcement_point": {
+      "requirement": "required"
+    },
+    "decision_evidence": {
+      "requirement": "recommended"
+    },
+    "delegation": {
+      "requirement": "optional"
+    },
+    "limits": {
+      "requirement": "optional"
+    },
+    "policy": {
+      "requirement": "recommended",
+      "description": "The policy and version in force when the decision was made."
+    },
+    "authorizations": {
+      "requirement": "optional",
+      "description": "Reuses the core Authorization Result object where a producer already emits it."
+    },
+    "purpose": {
+      "requirement": "optional"
+    },
+    "is_shadow": {
+      "requirement": "recommended"
+    },
+    "state_age": {
+      "requirement": "recommended"
+    },
+    "duration": {
+      "requirement": "optional",
+      "description": "Decision latency in milliseconds."
+    },
+    "status_id": {
+      "requirement": "optional"
+    },
+    "message": {
+      "requirement": "optional"
+    },
+    "count": {
+      "requirement": "optional",
+      "description": "For a batch decision, the number of subjects evaluated. Per-subject outcomes SHOULD still be emitted individually; a single aggregate verdict is not auditable."
+    },
+    "evidence_granularity": {
+      "requirement": "recommended"
+    },
+    "tenant_uid": {
+      "requirement": "recommended"
+    },
+    "observables": {
+      "requirement": "optional"
+    },
+    "unmapped": {
+      "requirement": "optional"
+    },
+    "raw_data": {
+      "requirement": "optional"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "reason_code",
+      "reason_code_id"
+    ]
+  },
+  "activity_id": {
+    "caption": "Activity",
+    "requirement": "required",
+    "enum": {
+      "1": {
+        "caption": "Read"
+      },
+      "2": {
+        "caption": "Create"
+      },
+      "3": {
+        "caption": "Update"
+      },
+      "4": {
+        "caption": "Delete"
+      },
+      "5": {
+        "caption": "List"
+      },
+      "6": {
+        "caption": "Export"
+      },
+      "7": {
+        "caption": "Detokenize"
+      },
+      "8": {
+        "caption": "Delegate"
+      },
+      "9": {
+        "caption": "Revoke"
+      },
+      "10": {
+        "caption": "Simulate"
+      },
+      "11": {
+        "caption": "Other"
+      }
+    }
+  }
+}

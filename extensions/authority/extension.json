@@ -1,0 +1,8 @@
+{
+  "uid": "PENDING-OCSF-REGISTRATION",
+  "name": "authority",
+  "caption": "Authority",
+  "description": "Per-record authorization decisions: whether a specific actor was permitted to perform a specific action on a specific record, under which delegated authority, with which reason code, and with what verifiable evidence. Complements Authorize Session (3003), which describes session-level privilege assignment rather than a decision about an individual record.",
+  "version": "0.3.0",
+  "_registration_note": "OCSF requires extensions to be registered to receive a unique identifier range. `uid` MUST be replaced with the allocated value before publication. The validator fails if this note is removed while uid is still the placeholder."
+}

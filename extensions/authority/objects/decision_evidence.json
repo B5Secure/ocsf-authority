@@ -1,0 +1,48 @@
+{
+  "caption": "Decision Evidence",
+  "name": "decision_evidence",
+  "extends": "object",
+  "description": "Evidence that a decision occurred as recorded, verifiable by a party that does not trust the system that produced it.",
+  "attributes": {
+    "uid": {
+      "caption": "Evidence ID",
+      "requirement": "required"
+    },
+    "hash": {
+      "caption": "Hash",
+      "requirement": "required",
+      "description": "Digest of the canonical decision record."
+    },
+    "prev_hash": {
+      "caption": "Previous Hash",
+      "requirement": "recommended",
+      "description": "Digest of the preceding record, forming the chain."
+    },
+    "chain_uid": {
+      "caption": "Chain ID",
+      "requirement": "recommended",
+      "description": "Identifier of the chain, typically per tenant."
+    },
+    "sequence": {
+      "caption": "Sequence",
+      "requirement": "recommended"
+    },
+    "signature": {
+      "caption": "Signature",
+      "requirement": "recommended"
+    },
+    "signing_key_uid": {
+      "caption": "Signing Key ID",
+      "requirement": "recommended"
+    },
+    "timestamp_authority": {
+      "caption": "Timestamp Authority",
+      "requirement": "optional"
+    },
+    "verifier_url": {
+      "caption": "Verifier URL",
+      "requirement": "optional",
+      "description": "Where the offline verifier and format specification are published."
+    }
+  }
+}
