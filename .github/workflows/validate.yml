@@ -1,0 +1,49 @@
+name: validate
+
+# Runs on every push and pull request. Two jobs, and the second is the one that
+# matters: a validator that has only ever seen valid input is untested.
+on: [push, pull_request]
+
+jobs:
+  samples-must-pass:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: Every sample must validate
+        run: python3 tools/validate_authority.py
+
+  attacks-must-fail:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: Every attack case must be rejected
+        run: |
+          fail=0
+          for f in tests/*.json; do
+            if python3 tools/validate_authority.py "$f" > /dev/null 2>&1; then
+              echo "ACCEPTED an event that must be rejected: $f"
+              fail=1
+            fi
+          done
+          exit $fail
+
+  schema-is-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Every schema file parses, and no identifier is pre-assigned
+        run: |
+          for f in $(find extensions -name '*.json'); do
+            python3 -c "import json,sys; json.load(open('$f'))" || exit 1
+          done
+          python3 - <<'PY'
+          import json
+          e = json.load(open('extensions/authority/extension.json'))
+          assert e['uid'] == 'PENDING-OCSF-REGISTRATION', \
+              'uid must stay the placeholder until OCSF assigns a range'
+          print('uid is still the placeholder:', e['uid'])
+          PY
