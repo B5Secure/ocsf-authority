@@ -8,8 +8,8 @@ jobs:
   samples-must-pass:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with: { python-version: '3.12' }
       - name: Every sample must validate
         run: python3 tools/validate_authority.py
@@ -17,8 +17,8 @@ jobs:
   attacks-must-fail:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with: { python-version: '3.12' }
       - name: Every attack case must be rejected
         run: |
@@ -34,7 +34,7 @@ jobs:
   schema-is-json:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Every schema file parses, and no identifier is pre-assigned
         run: |
           for f in $(find extensions -name '*.json'); do
