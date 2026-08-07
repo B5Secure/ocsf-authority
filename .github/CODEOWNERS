@@ -1,0 +1,23 @@
+# Default repository owner
+* @toddyancey
+
+# OCSF extension schema
+/extensions/authority/ @toddyancey
+
+# Valid samples and negative tests
+/samples/ @toddyancey
+/tests/ @toddyancey
+
+# Validators and registration tooling
+/tools/ @toddyancey
+
+# GitHub Actions and repository governance
+/.github/ @toddyancey
+
+# Public documentation and mappings
+/README.md @toddyancey
+/CONTRIBUTING.md @toddyancey
+/SECURITY.md @toddyancey
+/CHANGELOG.md @toddyancey
+/MAPPINGS.md @toddyancey
+/LICENSE @toddyancey
