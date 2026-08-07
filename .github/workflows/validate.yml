@@ -4,6 +4,9 @@ name: validate
 # matters: a validator that has only ever seen valid input is untested.
 on: [push, pull_request]
 
+permissions:
+  contents: read
+
 jobs:
   samples-must-pass:
     runs-on: ubuntu-latest
