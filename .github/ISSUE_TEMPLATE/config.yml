@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/B5Secure/ocsf-authority/security/advisories/new
+    about: Report suspected vulnerabilities privately. Do not open a public issue.
+
+  - name: Read the repository security policy
+    url: https://github.com/B5Secure/ocsf-authority/security/policy
+    about: Review supported versions, reporting instructions, scope, and disclosure principles.
+
+  - name: B5 Secure Trust Center
+    url: https://b5secure.com/trust-center/
+    about: Review B5 Secure security, trust, and disclosure resources.
